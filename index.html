@@ -1,0 +1,2472 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Longevity Diet — Healthy Kitchen Dubai</title>
+  
+  <style>
+/* ============================================================
+   CENTA — Colors & Type Tokens
+   Longevity meal-plan delivery. Warm, paper-led, editorial.
+   ============================================================ */
+
+
+
+/* Editorial accent serif — flagged: Google Fonts substitute, no client font supplied */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Roboto+Mono:wght@400;500&display=swap");
+
+:root {
+  /* ─── Base palette — ONLY these 4 colors per brand spec ───── */
+  /* #FFFFFF white · #E6EACE cream · #0C542F primary · #173328 deep */
+
+  --white:        #FFFFFF;
+  --cream:        #E6EACE;
+  --primary:      #0C542F;
+  --deep:         #173328;
+
+  /* Paper + surfaces — all map to the 4 colors */
+  --paper:        #FFFFFF;   /* primary page background */
+  --paper-2:      #E6EACE;   /* recessed / banded sections */
+  --paper-3:      #E6EACE;   /* hairline backgrounds */
+  --surface:      #FFFFFF;   /* raised cards */
+  --surface-2:    #FFFFFF;
+
+  --ink:          #173328;   /* primary text */
+  --ink-2:        color-mix(in oklab, #173328 80%, #FFFFFF);   /* secondary text */
+  --ink-3:        color-mix(in oklab, #173328 60%, #FFFFFF);   /* tertiary, meta */
+  --ink-4:        color-mix(in oklab, #173328 40%, #FFFFFF);   /* placeholder, disabled */
+
+  /* Brand — single primary, shades derived */
+  --olive-900:    #173328;
+  --olive-700:    #0A3E22;
+  --olive-600:    #0A4426;
+  --olive-500:    #0C542F;   /* brand primary */
+  --olive-400:    color-mix(in oklab, #0C542F 60%, #FFFFFF);
+  --olive-300:    color-mix(in oklab, #0C542F 35%, #FFFFFF);
+  --olive-200:    color-mix(in oklab, #E6EACE 70%, #0C542F 30%);
+  --olive-100:    #E6EACE;
+
+  /* Accent — remapped to primary (no terracotta in the brand) */
+  --clay-900:     #173328;
+  --clay-700:     #173328;
+  --clay-600:     #0C542F;
+  --clay-500:     #0C542F;
+  --clay-400:     color-mix(in oklab, #0C542F 60%, #FFFFFF);
+  --clay-300:     color-mix(in oklab, #0C542F 40%, #FFFFFF);
+  --clay-200:     color-mix(in oklab, #E6EACE 60%, #0C542F 40%);
+  --clay-100:     #E6EACE;
+
+  /* Tertiary tints — collapsed into the palette */
+  --butter-500:   #0C542F;
+  --butter-300:   color-mix(in oklab, #0C542F 50%, #E6EACE);
+  --butter-100:   #E6EACE;
+  --sage-500:     color-mix(in oklab, #0C542F 60%, #E6EACE);
+  --sage-300:     color-mix(in oklab, #0C542F 30%, #E6EACE);
+  --sage-100:     #E6EACE;
+  --sea-500:      #173328;
+  --sea-300:      color-mix(in oklab, #173328 50%, #E6EACE);
+  --sea-100:      #E6EACE;
+
+  /* ─── Semantic colors ─────────────────────────────────────── */
+  --bg:           var(--paper);
+  --bg-recessed:  var(--paper-2);
+  --bg-elevated:  var(--surface);
+  --bg-overlay:   color-mix(in oklab, var(--ink) 55%, transparent);
+
+  --fg:           var(--ink);
+  --fg-muted:     var(--ink-2);
+  --fg-subtle:    var(--ink-3);
+  --fg-faint:     var(--ink-4);
+  --fg-on-brand:  var(--paper);
+  --fg-on-clay:   var(--paper);
+
+  --border:       color-mix(in oklab, var(--ink) 14%, transparent);
+  --border-strong:color-mix(in oklab, var(--ink) 28%, transparent);
+  --border-soft:  color-mix(in oklab, var(--ink) 7%, transparent);
+
+  --brand:        var(--olive-500);
+  --brand-hover:  var(--olive-600);
+  --brand-press:  var(--olive-700);
+  --brand-soft:   var(--olive-100);
+
+  --accent:       var(--clay-500);
+  --accent-hover: var(--clay-600);
+  --accent-soft:  var(--clay-100);
+
+  --success:      var(--olive-600);
+  --success-soft: var(--olive-100);
+  --warning:      var(--butter-500);
+  --warning-soft: var(--butter-100);
+  --danger:       var(--deep);
+  --danger-soft:  var(--cream);
+  --info:         var(--sea-500);
+  --info-soft:    var(--sea-100);
+
+  /* ─── Type families ───────────────────────────────────────── */
+  --font-sans:    "Roboto Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-serif:   "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-mono:    "Roboto Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* ─── Type scale (1.250 — major third, tightened) ─────────── */
+  --fs-12:  0.75rem;
+  --fs-14:  0.875rem;
+  --fs-16:  1rem;
+  --fs-18:  1.125rem;
+  --fs-21:  1.3125rem;
+  --fs-24:  1.5rem;
+  --fs-30:  1.875rem;
+  --fs-38:  2.375rem;
+  --fs-48:  3rem;
+  --fs-64:  4rem;
+  --fs-88:  5.5rem;
+
+  /* Tracking — Roboto Condensed wants slight negative tracking at display sizes */
+  --tr-tight: -0.02em;
+  --tr-snug:  -0.01em;
+  --tr-base:   0em;
+  --tr-wide:   0.04em;
+  --tr-eyebrow:0.14em;
+
+  --lh-tight: 1.04;
+  --lh-snug:  1.18;
+  --lh-base:  1.5;
+  --lh-loose: 1.65;
+
+  /* Weights — Roboto Condensed variable */
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+  --fw-black:    900;
+
+  /* ─── Spacing (4px base) ──────────────────────────────────── */
+  --space-0:  0;
+  --space-1:  0.25rem;   /* 4 */
+  --space-2:  0.5rem;    /* 8 */
+  --space-3:  0.75rem;   /* 12 */
+  --space-4:  1rem;      /* 16 */
+  --space-5:  1.5rem;    /* 24 */
+  --space-6:  2rem;      /* 32 */
+  --space-7:  3rem;      /* 48 */
+  --space-8:  4rem;      /* 64 */
+  --space-9:  6rem;      /* 96 */
+  --space-10: 8rem;      /* 128 */
+
+  /* ─── Radii ───────────────────────────────────────────────── */
+  --r-0:  0;
+  --r-2:  2px;
+  --r-4:  4px;
+  --r-8:  8px;
+  --r-12: 12px;
+  --r-16: 16px;
+  --r-24: 24px;
+  --r-pill: 999px;
+
+  /* ─── Shadows — warm, low, layered (not bluish-cold) ──────── */
+  --shadow-1: 0 1px 0 0 color-mix(in oklab, var(--ink) 8%, transparent),
+              0 1px 2px -1px color-mix(in oklab, var(--ink) 10%, transparent);
+  --shadow-2: 0 1px 0 0 color-mix(in oklab, var(--ink) 6%, transparent),
+              0 6px 14px -6px color-mix(in oklab, var(--ink) 18%, transparent);
+  --shadow-3: 0 2px 0 0 color-mix(in oklab, var(--ink) 5%, transparent),
+              0 18px 30px -12px color-mix(in oklab, var(--ink) 22%, transparent);
+  --shadow-inset: inset 0 0 0 1px color-mix(in oklab, var(--ink) 6%, transparent);
+
+  /* ─── Motion ──────────────────────────────────────────────── */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in:    cubic-bezier(0.55, 0, 1, 0.45);
+  --ease-in-out:cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+  --dur-4: 520ms;
+}
+
+/* ============================================================
+   Semantic type styles — apply these to elements directly
+   ============================================================ */
+
+.t-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-12);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--tr-eyebrow);
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+
+.t-display, h1.display {
+  font-family: var(--font-sans);
+  font-size: clamp(2.75rem, 6vw, var(--fs-88));
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tr-tight);
+  color: var(--fg);
+}
+
+.t-serif-display {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5.5vw, var(--fs-88));
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  color: var(--fg);
+}
+
+h1, .t-h1 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-48);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tr-tight);
+  color: var(--fg);
+}
+
+h2, .t-h2 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-38);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tr-snug);
+  color: var(--fg);
+}
+
+h3, .t-h3 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-24);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tr-snug);
+  color: var(--fg);
+}
+
+h4, .t-h4 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-18);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  color: var(--fg);
+}
+
+p, .t-body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-16);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-base);
+  color: var(--fg-muted);
+}
+
+.t-lead {
+  font-family: var(--font-sans);
+  font-size: var(--fs-21);
+  font-weight: var(--fw-regular);
+  line-height: 1.4;
+  color: var(--fg-muted);
+}
+
+small, .t-small {
+  font-size: var(--fs-14);
+  line-height: var(--lh-base);
+  color: var(--fg-subtle);
+}
+
+.t-meta {
+  font-family: var(--font-sans);
+  font-size: var(--fs-12);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.02em;
+  color: var(--fg-subtle);
+}
+
+.t-stat {
+  font-family: var(--font-sans);
+  font-size: var(--fs-64);
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--fg);
+}
+
+code, .t-code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--paper-2);
+  padding: 0.1em 0.35em;
+  border-radius: var(--r-4);
+}
+
+a, .t-link {
+  color: var(--brand);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--dur-1) var(--ease-out);
+}
+a:hover, .t-link:hover { color: var(--brand-hover); }
+
+</style>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--paper);
+      color: var(--fg);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
+    body {
+      /* Reserve space for sticky bar on mobile */
+      padding-bottom: 84px;
+    }
+    @media (min-width: 768px) {
+      body { padding-bottom: 0; }
+    }
+
+    button { font-family: inherit; cursor: pointer; }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+    .container.narrow {
+      max-width: 820px;
+    }
+    @media (min-width: 768px) {
+      .container { padding: 0 40px; }
+    }
+
+    /* ====== Screen 1 — HERO ====== */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    @media (min-width: 880px) {
+      .hero-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 56px;
+        align-items: center;
+        min-height: 78vh;
+      }
+    }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      padding-top: 4px;
+      order: 2;
+    }
+    @media (min-width: 880px) { .hero-copy { order: 0; padding-top: 0; } }
+
+    .hero-photo {
+      position: relative;
+      order: 1;
+    }
+    @media (min-width: 880px) { .hero-photo { order: 0; } }
+
+    .hero-photo-tag {
+      position: absolute;
+      bottom: 24px;
+      left: 16px;
+      background: var(--surface);
+      padding: 14px 18px;
+      border-radius: 12px;
+      box-shadow: 0 1px 0 0 color-mix(in oklab, var(--ink) 6%, transparent),
+                  0 18px 30px -12px color-mix(in oklab, var(--ink) 28%, transparent);
+      max-width: 240px;
+    }
+    @media (min-width: 880px) {
+      .hero-photo-tag { left: -28px; bottom: 56px; }
+    }
+
+    .hero-price {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 12px 18px;
+      background: var(--surface);
+      border-radius: 999px;
+      align-self: flex-start;
+      box-shadow: inset 0 0 0 1px var(--border);
+      white-space: nowrap;
+      flex-wrap: nowrap;
+    }
+
+    .hide-on-mobile { display: none; }
+    @media (min-width: 600px) { .hide-on-mobile { display: inline; } }
+
+    .hero-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .hero-cta button { width: 100%; }
+    @media (min-width: 880px) {
+      .hero-cta button { width: auto; }
+    }
+
+    /* ====== Screen 2 — TRUST STRIP ====== */
+    .trust-grid {
+      list-style: none;
+      margin: 0; padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 16px;
+    }
+    @media (min-width: 880px) {
+      .trust-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+      }
+    }
+    .trust-grid li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--olive-900);
+      letter-spacing: 0.005em;
+    }
+    @media (min-width: 880px) {
+      .trust-grid li {
+        justify-content: center;
+        padding: 0 18px;
+      }
+      .trust-grid li + li {
+        border-left: 1px solid var(--border-soft);
+      }
+    }
+    .trust-grid svg { color: var(--olive-500); }
+
+    /* ====== Screen 5 — EVIDENCE ====== */
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 768px) {
+      .evidence-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+    }
+    .specifics-strip {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      padding: 32px 24px;
+      background: var(--olive-100);
+      border-radius: 16px;
+    }
+    @media (min-width: 768px) {
+      .specifics-strip {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* ====== Screen 6 — FOOD WALL ====== */
+    .dish-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 768px) {
+      .dish-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+    }
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    @media (max-width: 540px) {
+      .timeline {
+        gap: 0;
+      }
+      .timeline > div { min-width: 86px; }
+    }
+
+    /* ====== Screen 7 — PRICING ====== */
+    .plan-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    @media (min-width: 880px) {
+      .plan-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        align-items: stretch;
+      }
+    }
+    .plan-card {
+      position: relative;
+      background: var(--surface);
+      border-radius: 20px;
+      padding: 28px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      box-shadow: 0 1px 0 0 color-mix(in oklab, var(--ink) 6%, transparent),
+                  0 6px 14px -6px color-mix(in oklab, var(--ink) 18%, transparent);
+    }
+    .plan-card.popular {
+      background: var(--olive-900);
+      color: var(--paper);
+      box-shadow: 0 2px 0 0 color-mix(in oklab, var(--ink) 5%, transparent),
+                  0 18px 40px -10px color-mix(in oklab, var(--olive-900) 40%, transparent);
+    }
+    @media (min-width: 880px) {
+      .plan-card.popular {
+        margin-top: -12px;
+        margin-bottom: -12px;
+      }
+    }
+    .plan-badge {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--clay-500);
+      color: var(--paper);
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+    .plan-head { display: flex; flex-direction: column; gap: 8px; }
+    .plan-duration {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--fg-subtle);
+    }
+    .plan-card.popular .plan-duration { color: var(--olive-200); }
+    .plan-price {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .plan-price .from {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--fg-subtle);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .plan-card.popular .plan-price .from { color: var(--olive-200); }
+    .plan-price .amount {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 44px;
+      line-height: 1;
+      color: var(--olive-900);
+      letter-spacing: -0.028em;
+      font-variant-numeric: tabular-nums;
+    }
+    .plan-card.popular .plan-price .amount { color: var(--paper); }
+    .plan-price .per {
+      font-size: 15px;
+      color: var(--fg-muted);
+      font-weight: 500;
+    }
+    .plan-card.popular .plan-price .per { color: var(--olive-200); }
+    .plan-total {
+      font-size: 13px;
+      color: var(--fg-subtle);
+      letter-spacing: 0.02em;
+    }
+    .plan-card.popular .plan-total { color: var(--olive-200); }
+    .plan-bullets {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-top: 1px dashed color-mix(in oklab, var(--ink) 12%, transparent);
+      padding-top: 18px;
+      flex: 1;
+    }
+    .plan-card.popular .plan-bullets {
+      border-top-color: color-mix(in oklab, var(--paper) 16%, transparent);
+    }
+    .plan-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+    .plan-card.popular .plan-bullets li { color: var(--paper); }
+
+    .price-anchor-note {
+      margin-top: 48px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 36px 32px;
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1.5px solid var(--olive-500);
+      text-align: center;
+    }
+
+    /* ====== Screen 8 — WHO IT'S FOR ====== */
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    @media (min-width: 768px) {
+      .who-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+    .who-col {
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 32px;
+      border: 1.5px solid var(--olive-500);
+    }
+    .who-head { margin-bottom: 20px; }
+    .who-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .who-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .who-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+    .who-list li svg { margin-top: 3px; }
+
+    /* ====== Sticky bottom bar ====== */
+    .sticky-bar {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 40;
+      background: color-mix(in oklab, var(--surface) 96%, transparent);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid var(--border-soft);
+      transition: transform 320ms var(--ease-out);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    @media (min-width: 768px) {
+      .sticky-bar { display: none; }
+    }
+    .sticky-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 18px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ====== Modal ====== */
+    .modal-scrim {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: color-mix(in oklab, var(--olive-900) 50%, transparent);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      transition: opacity 220ms var(--ease-out);
+      padding: 0;
+    }
+    @media (min-width: 768px) {
+      .modal-scrim { align-items: center; padding: 32px; }
+    }
+    .modal-sheet {
+      width: 100%;
+      max-width: 540px;
+      background: var(--paper);
+      border-radius: 24px 24px 0 0;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      transition: transform 280ms var(--ease-out);
+      box-shadow: 0 -8px 40px -8px color-mix(in oklab, var(--ink) 30%, transparent);
+    }
+    @media (min-width: 768px) {
+      .modal-sheet {
+        border-radius: 24px;
+        max-height: 80vh;
+      }
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      width: 40px; height: 40px;
+      border-radius: 999px;
+      background: var(--paper-2);
+      border: none;
+      color: var(--ink);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      transition: background 160ms var(--ease-out);
+    }
+    .modal-close:hover { background: var(--paper-3); }
+
+    .modal-body {
+      padding: 36px 28px 28px;
+    }
+    @media (min-width: 768px) {
+      .modal-body { padding: 40px 40px 32px; }
+    }
+    .modal-progress {
+      display: flex;
+      gap: 6px;
+      margin: 18px 0 24px;
+    }
+    .modal-progress span {
+      flex: 1;
+      height: 4px;
+      border-radius: 999px;
+      transition: background 200ms var(--ease-out);
+    }
+    .chip-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .chip {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      text-align: left;
+      padding: 14px 16px;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.35;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 160ms var(--ease-out);
+    }
+    .chip:hover { border-color: var(--olive-400); background: var(--olive-100); }
+    .chip.selected {
+      border-color: var(--olive-500);
+      background: var(--olive-100);
+      color: var(--olive-900);
+      font-weight: 500;
+    }
+    .wa-btn {
+      margin-top: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px 24px;
+      background: #0C542F;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 999px;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 0.005em;
+      transition: background 160ms var(--ease-out);
+    }
+    .wa-btn:hover:not(:disabled) { background: #173328; }
+  </style>
+</head>
+<body data-screen-label="Longevity Diet · Landing">
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+
+  <script type="text/babel" data-presets="react,env">
+
+/* Longevity Diet — Landing Page
+   Healthy Kitchen (HK), Dubai. AIDA 11-screen architecture.
+   Mobile-first. Single CTA → qualification modal → WhatsApp. */
+
+/* global React */
+const { useState, useEffect, useRef } = React;
+
+const PRIMARY_CTA = "Talk to our expert";
+
+/* ============================================================
+   Icons — inline SVG, 1.5px stroke. Lucide-inspired.
+   ============================================================ */
+const ICONS = {
+  users: <g><path d="M16 11a4 4 0 1 0-8 0 4 4 0 0 0 8 0Z"/><path d="M3 21a9 9 0 0 1 18 0"/></g>,
+  dna:   <g><path d="M2 15c6.667-6 13.333 0 20-6"/><path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993"/><path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993"/><path d="m17 6-2.5-2.5"/><path d="m14 8-1-1"/><path d="m7 18 2.5 2.5"/><path d="m3.5 14.5.5.5"/><path d="m20 9 .5.5"/><path d="m6.5 12.5 1 1"/><path d="m16.5 10.5 1 1"/><path d="m10 16 1.5 1.5"/></g>,
+  leaf:  <g><path d="M11 20A7 7 0 0 1 4 13c0-3 2-6 5-7s7 0 9 3c1 4-1 8-5 9-1 0-2 0-2 2Z"/><path d="M4 13c4-2 7-1 9 2"/></g>,
+  plant: <g><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></g>,
+  beef:  <g><circle cx="12.5" cy="8.5" r="2.5"/><path d="M12.5 2a6.5 6.5 0 0 0-6.22 4.6c-.18.66-.86 1.13-1.55 1.1H4a2 2 0 0 0-2 2v.5a2.5 2.5 0 0 0 5 0V10h11.5a6.5 6.5 0 0 0-6-8Z"/><path d="M6 18a4 4 0 0 0 4 4 7 7 0 0 0 7-7v-3"/></g>,
+  fish:  <g><path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.47-3.44 6-7 6s-7.56-2.53-8.5-6Z"/><path d="M18 12v.5"/><path d="M16 17.93a9.77 9.77 0 0 1 0-11.86"/><path d="M7 10.67C7 8 5.58 5.97 2.73 5.5c-1 1.5-1 5 .5 6.5-1.5 1.5-1.5 5-.5 6.5 2.85-.47 4.27-2.5 4.27-5.16"/><path d="M10.46 7.26C10.2 5.88 9.17 4.24 8 3h5.8a2 2 0 0 1 1.98 1.67l.23 1.4"/><path d="m16.01 17.93-.23 1.4A2 2 0 0 1 13.8 21H9.5a5.96 5.96 0 0 0 1.49-3.98"/></g>,
+  truck: <g><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></g>,
+  olive: <g><ellipse cx="12" cy="14" rx="6" ry="7"/><path d="M12 7c0-3 2-5 5-5"/><path d="M14 9c1-2 4-3 6-2"/></g>,
+  globe: <g><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20Z"/></g>,
+  microscope: <g><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/></g>,
+  package: <g><path d="M16.5 9.4 7.55 4.24"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></g>,
+  clock: <g><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g>,
+  smile: <g><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></g>,
+  check: <g><path d="M20 6 9 17l-5-5"/></g>,
+  x:     <g><path d="M18 6 6 18"/><path d="m6 6 12 12"/></g>,
+  plus:  <g><path d="M5 12h14"/><path d="M12 5v14"/></g>,
+  minus: <g><path d="M5 12h14"/></g>,
+  star:  <g><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></g>,
+  whatsapp: <g><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" fill="none"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></g>,
+
+  /* Food + meal icons (lucide-style) */
+  lunchbox: <g><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 11h18"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M9 15h6"/></g>,
+  bowl:     <g><path d="M3 11h18a9 9 0 0 1-18 0Z"/><path d="M12 4c-2 0-3 2-2 4"/><path d="M16 5c-2 0-3 2-2 4"/><path d="M8 5c-2 0-3 2-2 4"/></g>,
+  utensils: <g><path d="M3 2v7c0 1.1.9 2 2 2h0a2 2 0 0 0 2-2V2"/><path d="M5 11v11"/><path d="M11 2v20"/><path d="M15 2v8c0 1.6 1.4 3 3 3l-1 9"/></g>,
+  plate:    <g><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="6"/></g>,
+  salad:    <g><path d="M7 21h10"/><path d="M5 21a6 6 0 0 1-1-3.4c0-.4.5-1.6 4-1.6h8c3.5 0 4 1.2 4 1.6a6 6 0 0 1-1 3.4"/><path d="M13 11c0-2.5 2-4 4-4-1 1.7-2.5 2.5-3 4-.6 2 1.5 3 3 2"/><path d="M11 14c-1.5-2-4-3-7-3 1 2 2.5 3 4 4 2 1 4 1 6 1"/><path d="M8 8c0-2 2-3 4-3 .5 1.5 0 3-1 4-1.5 1-3 1-4 0"/></g>,
+  nuts:     <g><path d="M5.5 8c0-2.2 2.9-4 6.5-4s6.5 1.8 6.5 4"/><path d="M5.5 8h13"/><path d="M5.5 8c0 5 2.5 12 6.5 12s6.5-7 6.5-12"/><path d="M12 4V2"/><path d="M8 10.5h8"/></g>,
+  avocado:  <g><path d="M12 2c-1.2 0-2 .8-2.5 2C7.5 5 6 8 6 12.5c0 4.5 2.5 8 6 8s6-3.5 6-8C18 8 16.5 5 14.5 4 14 2.8 13.2 2 12 2Z"/><path d="M12 5c-.5 0-1 .3-1.3 1C9 6.7 8 9.2 8 12.5c0 3.5 1.8 6 4 6s4-2.5 4-6c0-3.3-1-5.8-2.7-6.5C13 5.3 12.5 5 12 5Z"/><circle cx="12" cy="14" r="2.4"/></g>,
+  oliveoil: <g><path d="M10 3h4"/><path d="M10 3v4c-1.5.8-3 2-3 4v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8c0-2-1.5-3.2-3-4V3"/><path d="M8.5 13h7"/></g>,
+  droplet:  <g><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></g>,
+  broccoli: <g><circle cx="8" cy="7.5" r="3"/><circle cx="13" cy="6" r="2.8"/><circle cx="16.5" cy="8.5" r="2.8"/><circle cx="10.5" cy="9.5" r="2.5"/><path d="M9 11.5v5.5a3 3 0 0 0 6 0v-5"/></g>,
+  lettuce:  <g><path d="M12 3c-4.5 0-8 3-8 7 0 3 2 6 4 7 1.5-1 3-2 4-2s2.5 1 4 2c2-1 4-4 4-7 0-4-3.5-7-8-7Z"/><path d="M12 3v14"/><path d="M8 6.5c1 1 2 2.5 2 4.5"/><path d="M16 6.5c-1 1-2 2.5-2 4.5"/></g>,
+};
+
+function Icon({ name, size = 20, color = "currentColor", strokeWidth = 1.5 }) {
+  const content = ICONS[name];
+  if (!content) return null;
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color}
+      strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"
+      style={{ flexShrink: 0 }}>
+      {content}
+    </svg>
+  );
+}
+
+/* ============================================================
+   Reusable bits
+   ============================================================ */
+
+function CTA({ children = PRIMARY_CTA, onClick, full, size = "md", tone = "primary" }) {
+  const padding = size === "lg" ? "16px 32px" : size === "sm" ? "10px 22px" : "14px 28px";
+  const fontSize = size === "lg" ? 17 : size === "sm" ? 14 : 16;
+  const styles = {
+    primary: { background: "var(--olive-500)", color: "var(--paper)" },
+    light:   { background: "var(--paper)", color: "var(--olive-900)" },
+    outline: { background: "transparent", color: "var(--olive-900)", boxShadow: "inset 0 0 0 1.5px var(--olive-900)" },
+  }[tone];
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 10,
+        fontFamily: "var(--font-sans)",
+        fontWeight: 600,
+        fontSize,
+        letterSpacing: "0.005em",
+        border: "none",
+        borderRadius: 999,
+        padding,
+        width: full ? "100%" : "auto",
+        cursor: "pointer",
+        whiteSpace: "nowrap",
+        transition: "all 160ms var(--ease-out)",
+        ...styles,
+      }}
+      onMouseDown={(e) => { e.currentTarget.style.transform = "scale(0.99)"; }}
+      onMouseUp={(e) => { e.currentTarget.style.transform = "scale(1)"; }}
+      onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; }}
+    >
+      <span>{children}</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+      </svg>
+    </button>
+  );
+}
+
+function Eyebrow({ children, tone = "default" }) {
+  const color = tone === "light" ? "var(--olive-200)" : tone === "clay" ? "var(--clay-500)" : "var(--olive-600)";
+  return (
+    <span style={{
+      fontFamily: "var(--font-sans)",
+      fontSize: 12,
+      fontWeight: 600,
+      letterSpacing: "0.18em",
+      textTransform: "uppercase",
+      color,
+    }}>{children}</span>
+  );
+}
+
+function SerifHead({ children, size = 56, color = "var(--olive-900)", as = "h2" }) {
+  const El = as;
+  return (
+    <El style={{
+      fontFamily: "var(--font-serif)",
+      fontWeight: 400,
+      fontSize: size,
+      lineHeight: 1.02,
+      letterSpacing: "-0.015em",
+      color,
+      margin: 0,
+    }}>{children}</El>
+  );
+}
+
+/* Photo placeholder — used wherever real food photography will go.
+   The brief explicitly requires food photos; these are CLEARLY-marked
+   placeholders so the user can see exactly what to brief their photographer.
+   ONLY the brand 4-color palette is used here. */
+function PhotoSlot({ aspectRatio = "4/3", tone = "olive", label, rounded = 12, full = false, dark = false, src, alt }) {
+  if (src) {
+    return (
+      <div style={{
+        position: "relative",
+        aspectRatio,
+        width: full ? "100%" : undefined,
+        borderRadius: rounded,
+        overflow: "hidden",
+        boxShadow: dark ? "none" : "inset 0 0 0 1px color-mix(in oklab, #173328 12%, transparent)",
+      }}>
+        <img
+          src={src}
+          alt={alt || label || ""}
+          loading="lazy"
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+        />
+        {label && (
+          <span style={{
+            position: "absolute",
+            bottom: 12, left: 12,
+            background: "rgba(0,0,0,0.28)",
+            backdropFilter: "blur(6px)",
+            color: "var(--paper)",
+            padding: "5px 11px",
+            borderRadius: 999,
+            fontSize: 10,
+            fontWeight: 500,
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+          }}>{label}</span>
+        )}
+      </div>
+    );
+  }
+  const palettes = {
+    olive:  ["#E6EACE", "#0C542F", "#173328"],
+    forest: ["#0C542F", "#173328", "#173328"],
+    clay:   ["#E6EACE", "#0C542F", "#173328"],
+    butter: ["#FFFFFF", "#E6EACE", "#0C542F"],
+    cream:  ["#FFFFFF", "#E6EACE", "#E6EACE"],
+    sea:    ["#E6EACE", "#0C542F", "#173328"],
+  };
+  const c = palettes[tone] || palettes.olive;
+  return (
+    <div style={{
+      position: "relative",
+      aspectRatio,
+      width: full ? "100%" : undefined,
+      borderRadius: rounded,
+      overflow: "hidden",
+      background: `linear-gradient(135deg, ${c[0]} 0%, ${c[1]} 60%, ${c[2]} 100%)`,
+      boxShadow: dark ? "none" : "inset 0 0 0 1px color-mix(in oklab, #173328 12%, transparent)",
+    }}>
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "radial-gradient(circle at 25% 30%, rgba(255,255,255,0.22), transparent 45%), radial-gradient(circle at 80% 75%, rgba(0,0,0,0.22), transparent 50%)",
+        mixBlendMode: "overlay",
+      }} />
+      {label && (
+        <span style={{
+          position: "absolute",
+          bottom: 12, left: 12,
+          background: "rgba(0,0,0,0.28)",
+          backdropFilter: "blur(6px)",
+          color: "var(--paper)",
+          padding: "5px 11px",
+          borderRadius: 999,
+          fontSize: 10,
+          fontWeight: 500,
+          letterSpacing: "0.14em",
+          textTransform: "uppercase",
+        }}>{label}</span>
+      )}
+    </div>
+  );
+}
+
+/* ============================================================
+   1. Header (minimal — no nav, this LP is single-path)
+   ============================================================ */
+function Header({ openModal }) {
+  return (
+    <header style={{
+      position: "absolute",
+      top: 0, left: 0, right: 0,
+      zIndex: 20,
+      padding: "20px 0",
+    }}>
+      <div className="container" style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}>
+        <a href="#" style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 12,
+          textDecoration: "none",
+        }}>
+          <img
+            src="assets/healthy-kitchen-logo.png"
+            alt="Healthy Kitchen — Healing food delivery"
+            style={{ height: 56, width: "auto", display: "block" }}
+          />
+          <span className="hide-on-mobile" style={{
+            fontFamily: "var(--font-serif)",
+            fontSize: 16,
+            color: "var(--olive-600)",
+            paddingLeft: 12,
+            borderLeft: "1px solid var(--border-soft)",
+            whiteSpace: "nowrap",
+          }}>Longevity Diet</span>
+        </a>
+        <CTA size="sm" onClick={openModal}>{PRIMARY_CTA}</CTA>
+      </div>
+    </header>
+  );
+}
+
+/* ============================================================
+   Screen 1 — HERO
+   ============================================================ */
+function Hero({ openModal }) {
+  return (
+    <section style={{
+      position: "relative",
+      paddingTop: 96,
+      paddingBottom: 24,
+      overflow: "hidden",
+    }}>
+      <div className="container">
+        <div className="hero-grid">
+          <div className="hero-copy">
+            <Eyebrow tone="clay">Healthy Kitchen · Longevity Diet</Eyebrow>
+            <SerifHead as="h1" size={64}>
+              Longevity isn't a&nbsp;supplement.<br />
+              <span style={{ fontStyle: "normal", fontFamily: "var(--font-sans)", fontWeight: 700, letterSpacing: "-0.03em" }}>
+                It's what you eat <em style={{ fontFamily: "var(--font-serif)", fontWeight: 400 }}>every day.</em>
+              </span>
+            </SerifHead>
+            <p style={{
+              fontSize: 18,
+              lineHeight: 1.5,
+              color: "var(--fg-muted)",
+              maxWidth: 520,
+              margin: "0",
+            }}>
+              Not a cleanse. Not a weight-loss program. The closest thing to having your own nutritionist, sourcing team, and chef — except someone else does the work, and the food shows up at your door.
+            </p>
+            <p style={{
+              fontSize: 15,
+              lineHeight: 1.5,
+              color: "var(--fg-subtle)",
+              margin: 0,
+              maxWidth: 520,
+            }}>
+              No sugar, no gluten, no dairy. No improvising.
+            </p>
+
+            <div style={{
+              display: "flex",
+              alignItems: "baseline",
+              gap: 6,
+              flexWrap: "wrap",
+              padding: "4px 0",
+            }}>
+              <span style={{
+                fontFamily: "var(--font-sans)",
+                fontSize: 11,
+                fontWeight: 500,
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
+                color: "var(--fg-subtle)",
+                marginRight: 4,
+              }}>From</span>
+              <span style={{
+                fontFamily: "var(--font-sans)",
+                fontSize: 32,
+                fontWeight: 700,
+                letterSpacing: "-0.02em",
+                color: "var(--olive-900)",
+                fontVariantNumeric: "tabular-nums",
+                lineHeight: 1,
+              }}>AED 185</span>
+              <span style={{
+                fontFamily: "var(--font-sans)",
+                fontSize: 16,
+                color: "var(--fg-muted)",
+              }}>/ day</span>
+            </div>
+
+            <div className="hero-cta">
+              <CTA size="lg" onClick={openModal}>{PRIMARY_CTA}</CTA>
+              <p style={{
+                fontSize: 13,
+                color: "var(--fg-subtle)",
+                margin: 0,
+              }}>Free delivery across Dubai. Pause or change your plan anytime.</p>
+            </div>
+          </div>
+
+          <div className="hero-photo">
+            <PhotoSlot aspectRatio="4/5" tone="sea" src="assets/hero-pharmacy-bowl.jpeg" alt="Pharmacy bowl" rounded={20} />
+            <div className="hero-photo-tag">
+              <div style={{ fontSize: 11, fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--fg-subtle)" }}>This week's lunch</div>
+              <div style={{ fontFamily: "var(--font-serif)", fontSize: 18, color: "var(--olive-900)", marginTop: 4 }}>Pharmacy bowl</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Below-fold strip teaser */}
+      <div style={{
+        marginTop: 64,
+        borderTop: "1px solid var(--border-soft)",
+        background: "var(--paper-2)",
+        height: 0,
+      }} />
+    </section>
+  );
+}
+
+/* ============================================================
+   Screen 2 — TRUST STRIP
+   ============================================================ */
+function TrustStrip() {
+  const items = [
+    { icon: "dna",       text: "Designed with longevity experts" },
+    { icon: "plant",     text: "35+ plant species / week" },
+    { icon: "fish",      text: "Organic proteins" },
+    { icon: "truck",     text: "Delivered fresh daily" },
+  ];
+
+  return (
+    <section style={{
+      background: "var(--surface)",
+      borderTop: "1px solid var(--border-soft)",
+      borderBottom: "1px solid var(--border-soft)",
+      padding: "28px 0",
+    }}>
+      <div className="container">
+        <ul className="trust-grid">
+          {items.map((it) => (
+            <li key={it.text}>
+              <Icon name={it.icon} />
+              <span>{it.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   Screen 3 — THE PROBLEM WORTH SOLVING
+   ============================================================ */
+function Problem() {
+  return (
+    <section style={{ padding: "112px 0 96px" }}>
+      <div className="container narrow">
+        <SerifHead as="h2" size={48}>
+          You already know what "eating well" means.
+          <br />
+          The hard part is doing it on <em>Wednesday at 2pm.</em>
+        </SerifHead>
+
+        <div style={{
+          marginTop: 36,
+          display: "flex",
+          flexDirection: "column",
+          gap: 22,
+          fontFamily: "var(--font-sans)",
+          fontSize: 18,
+          lineHeight: 1.65,
+          color: "var(--fg-muted)",
+        }}>
+          <p style={{ margin: 0 }}>
+            You've read the books. You know about Blue Zones, Mediterranean eating, what omega-3s actually do. You know seed oils are a fight. You know sugar is doing more damage than salt ever did. You have probably done keto, intermittent fasting, or a juice cleanse. Possibly all three.
+          </p>
+          <p style={{ margin: 0 }}>
+            And yet most weeks still end the same way. A skipped breakfast. A working lunch from whatever was downstairs. A late dinner you didn't plan. Snacks chosen because they were nearby.
+          </p>
+          <p style={{ margin: 0, color: "var(--olive-900)", fontWeight: 500 }}>
+            You are not failing at nutrition. You are failing at logistics.
+          </p>
+          <p style={{ margin: 0 }}>
+            The question is not <em>what</em> to eat. It is <em>how</em> to make the right thing be the easiest thing — at 7am, at 1pm, at 8pm. Every day. Including the days you are underslept, travelling, and have three meetings before lunch.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   Screen 4 — WHAT THE LONGEVITY DIET DOES
+   ============================================================ */
+function Manifesto({ openModal }) {
+  const items = [
+    { n: "01", h: "No tracking.", b: "The plan is built around principles, not arithmetic." },
+    { n: "02", h: "Daily food, designed to add up.", b: "Over weeks and months — not five days and a flat stomach." },
+    { n: "03", h: "Cooked and delivered.", b: "You eat. That is the entire process." },
+    { n: "04", h: "Pause for travel. Skip for socials.", b: "No penalty, no guilt, no streak to break." },
+    { n: "05", h: "A named framework. Cited research.", b: "Per-meal data you can read on the menu." },
+  ];
+  return (
+    <section style={{ background: "#FFFFFF", padding: "96px 0" }}>
+      <div className="container narrow">
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <Eyebrow>A quiet manifesto</Eyebrow>
+          <SerifHead as="h2" size={48} color="var(--olive-900)">
+            What the <em style={{ fontFamily: "var(--font-serif)", fontWeight: 400 }}>Longevity Diet</em> does.
+          </SerifHead>
+        </div>
+        <div style={{
+          background: "#FFFFFF",
+          borderRadius: 24,
+          padding: "8px 40px",
+          border: "1.5px solid var(--olive-500)",
+        }}>
+          {items.map((it, i) => (
+            <div key={it.n} style={{
+              display: "flex",
+              gap: 32,
+              alignItems: "flex-start",
+              padding: "32px 0",
+              borderTop: i === 0 ? "none" : "1px solid color-mix(in oklab, var(--olive-500) 22%, transparent)",
+            }}>
+              <span style={{
+                fontFamily: "var(--font-serif)",
+                fontSize: 44,
+                color: "var(--olive-500)",
+                lineHeight: 1,
+                width: 64,
+                flexShrink: 0,
+                fontWeight: 400,
+                letterSpacing: "-0.01em",
+              }}>{it.n}</span>
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                <h3 style={{
+                  fontFamily: "var(--font-sans)",
+                  fontWeight: 700,
+                  fontSize: 28,
+                  lineHeight: 1.12,
+                  color: "var(--olive-900)",
+                  margin: 0,
+                  letterSpacing: "-0.015em",
+                }}>{it.h}</h3>
+                <p style={{ margin: 0, fontSize: 18, lineHeight: 1.5, color: "var(--ink-2)" }}>{it.b}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{ textAlign: "center", marginTop: 44 }}>
+          <CTA size="lg" onClick={openModal}>{PRIMARY_CTA}</CTA>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   Screen 5 — EVIDENCE WALL
+   ============================================================ */
+function Evidence({ openModal }) {
+  const cards = [
+    {
+      icon: "fish",
+      title: "The Mediterranean diet, the most studied diet in the world",
+      body: "Olive oil, fish, legumes, vegetables, whole grains, nuts. Three decades of cohort evidence make this the most rigorously supported pattern of eating we have. We use it as the backbone.",
+      cite: "PREDIMED trial — Estruch et al., NEJM 2018, N=7,447",
+    },
+    {
+      icon: "globe",
+      title: "Blue Zones, the populations that live longest",
+      body: "Sardinia, Ikaria, Okinawa, Nicoya, Loma Linda. The common thread isn't a single nutrient. It's daily beans, leafy greens, nuts, modest fish, almost no refined sugar.",
+      cite: "Dan Buettner / National Geographic. Peer-reviewed work on Sardinian centenarians.",
+    },
+    {
+      icon: "microscope",
+      title: "Valter Longo's longevity nutrition pillars",
+      body: "Dr. Longo runs the Longevity Institute at USC. TIME named him one of the 50 most influential people in healthcare in 2018. His framework — pescatarian-leaning, lower animal protein under 65, 12-hour eating window, legumes daily — informs the structural logic of the plan.",
+      cite: "Longo, V.D., USC Longevity Institute.",
+    },
+    {
+      icon: "plant",
+      title: "Plant diversity, measured",
+      body: "The largest open microbiome study ever conducted (11,000+ participants) found that people who ate 30+ different plant species per week had measurably more diverse gut microbiomes. Our weekly menu rotates through 35+. We print the count on your menu.",
+      cite: "McDonald et al., mSystems (ASM), 2018.",
+    },
+  ];
+  const specifics = [
+    { n: "35+", l: "plant species per week" },
+    { n: "30–45ml", l: "extra virgin olive oil / day" },
+    { n: "3×", l: "omega-3 rich foods / week" },
+    { n: "0g", l: "added sugar, gluten, dairy, seed oils" },
+  ];
+  return (
+    <section style={{ padding: "112px 0 96px" }}>
+      <div className="container">
+        <div style={{ maxWidth: 760, margin: "0 auto 48px", textAlign: "center" }}>
+          <Eyebrow>The framework</Eyebrow>
+          <SerifHead as="h2" size={48}>
+            Built on the nutrition that actually has evidence behind it.
+          </SerifHead>
+          <p style={{ marginTop: 18, fontSize: 18, lineHeight: 1.55, color: "var(--fg-muted)" }}>
+            Most healthy meal plans hide behind clean ingredients and never tell you what they actually believe about food. We will.
+          </p>
+        </div>
+
+        <div className="evidence-grid">
+          {cards.map((c) => (
+            <article key={c.title} style={{
+              background: "var(--surface)",
+              borderRadius: 16,
+              padding: 32,
+              borderLeft: "3px solid var(--olive-500)",
+              boxShadow: "0 1px 0 0 color-mix(in oklab, var(--ink) 6%, transparent), 0 6px 14px -6px color-mix(in oklab, var(--ink) 18%, transparent)",
+              display: "flex",
+              flexDirection: "column",
+              gap: 14,
+            }}>
+              <Icon name={c.icon} size={28} color="var(--olive-600)" />
+              <h3 style={{
+                fontFamily: "var(--font-serif)",
+                fontWeight: 400,
+                fontSize: 26,
+                lineHeight: 1.15,
+                color: "var(--olive-900)",
+                margin: 0,
+                letterSpacing: "-0.01em",
+              }}>{c.title}</h3>
+              <p style={{ margin: 0, fontSize: 16, lineHeight: 1.55, color: "var(--fg-muted)" }}>{c.body}</p>
+              <div style={{
+                marginTop: "auto",
+                paddingTop: 12,
+                borderTop: "1px dashed var(--border-soft)",
+                fontFamily: "var(--font-sans)",
+                fontSize: 12,
+                color: "var(--fg-subtle)",
+                lineHeight: 1.4,
+              }}>{c.cite}</div>
+            </article>
+          ))}
+        </div>
+
+        <div className="specifics-strip">
+          {specifics.map((s) => (
+            <div key={s.l}>
+              <div style={{
+                fontFamily: "var(--font-sans)",
+                fontSize: 40,
+                fontWeight: 700,
+                color: "var(--olive-900)",
+                letterSpacing: "-0.025em",
+                lineHeight: 1,
+                fontVariantNumeric: "tabular-nums",
+              }}>{s.n}</div>
+              <div style={{
+                marginTop: 8,
+                fontSize: 13,
+                color: "var(--fg-subtle)",
+                letterSpacing: "0.04em",
+                textTransform: "uppercase",
+                fontWeight: 500,
+              }}>{s.l}</div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ textAlign: "center", marginTop: 56 }}>
+          <CTA size="lg" onClick={openModal}>{PRIMARY_CTA}</CTA>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   Screen 6 — WHAT'S INSIDE
+   ============================================================ */
+function FoodWall({ openModal }) {
+  const galleryRef = useRef(null);
+  const dishes = [
+    {
+      name: "Potato waffle with smoked salmon & egg ",
+      meal: "Morning",
+      tone: "sea",
+      src: "assets/dish-salmon-waffle.jpeg",
+      desc: "Cured salmon, jammy egg and a potato waffle under herbed coconut yoghurt — omega-3 forward and blood-sugar friendly.",
+    },
+    {
+      name: "Summer salad with mango & prawns ",
+      meal: "Lunch",
+      tone: "olive",
+      src: "assets/dish-beet-shrimp-salad.png",
+      desc: "Wild greens, sweet beets, mango and pumpkin seeds with poached prawns — polyphenol-rich and Blue Zone inspired.",
+    },
+    {
+      name: "Miso salmon with sweet potato & broccoli",
+      meal: "Dinner",
+      tone: "clay",
+      src: "assets/dish-sweet-potato-broccoli.png",
+      desc: "Caramelised sweet potato and steamed broccoli with organic miso salmon. Plant-forward comfort.",
+    },
+    {
+      name: "House hummus with vegetables ",
+      meal: "Snack",
+      tone: "butter",
+      src: "assets/dish-hummus-crudite.png",
+      desc: "Silky chickpea hummus, good olive oil and smoked paprika with crisp carrot, cucumber and celery. Fiber and good fats.",
+    },
+    {
+      name: "Raw cacao cake with raspberry ",
+      meal: "Treat",
+      tone: "clay",
+      src: "assets/dish-cacao-brownie.jpeg",
+      desc: "A dense almond-flour cake with raw cacao ganache and fresh raspberries — naturally sweetened, no refined sugar.",
+    },
+  ];
+  const scrollGallery = (dir) => {
+    const el = galleryRef.current;
+    if (!el) return;
+    const first = el.querySelector('article');
+    const step = first ? first.offsetWidth + 24 : 320;
+    el.scrollBy({ left: dir * step, behavior: 'smooth' });
+  };
+  const foods = [
+    {
+      name: "Fish",
+      icon: "fish",
+      tag: "Omega-3 · Protein",
+      benefit: "The omega-3s your body can't make on its own — for the heart, brain, and lower inflammation.",
+    },
+    {
+      name: "Nuts & seeds",
+      icon: "nuts",
+      tag: "Good fats · Magnesium",
+      benefit: "Monounsaturated fats, magnesium and fiber. Fuller for longer, steady energy, no sugar crash.",
+    },
+    {
+      name: "Whole grains",
+      icon: "plant",
+      tag: "Slow carbs · B-vitamins",
+      benefit: "Quinoa, buckwheat, oats. Energy that lasts past 3pm instead of spiking and dropping.",
+    },
+    {
+      name: "Greens & vegetables",
+      icon: "salad",
+      tag: "Fiber · Polyphenols",
+      benefit: "Fiber for your gut, antioxidants and polyphenols to protect cells from everyday oxidative stress.",
+    },
+    {
+      name: "Good fats",
+      icon: "droplet",
+      tag: "Monounsaturated",
+      benefit: "Cold-pressed olive oil and avocado — the Mediterranean backbone, and how you actually absorb vitamins A, D, E and K.",
+    },
+    {
+      name: "Bone broth",
+      icon: "bowl",
+      tag: "Collagen · Amino acids",
+      benefit: "Slow-cooked for collagen and amino acids — for joints, skin and a calmer gut.",
+    },
+  ];
+  return (
+    <section style={{ background: "#FFFFFF", padding: "112px 0 96px" }}>
+      <div className="container">
+        <div style={{
+          display: "flex",
+          alignItems: "flex-end",
+          justifyContent: "space-between",
+          gap: 24,
+          flexWrap: "wrap",
+          marginBottom: 32,
+        }}>
+          <div style={{ maxWidth: 720 }}>
+            <Eyebrow>What's inside</Eyebrow>
+            <SerifHead as="h2" size={48}>
+              What you'll actually be eating this week.
+            </SerifHead>
+          </div>
+          <div style={{ display: "flex", gap: 10 }}>
+            <button
+              type="button"
+              aria-label="Previous dishes"
+              onClick={() => scrollGallery(-1)}
+              className="gal-arrow"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button
+              type="button"
+              aria-label="Next dishes"
+              onClick={() => scrollGallery(1)}
+              className="gal-arrow"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div
+          ref={galleryRef}
+          className="dish-gallery"
+        >
+          {dishes.map((d) => (
+            <article key={d.name} style={{
+              flex: "0 0 320px",
+              scrollSnapAlign: "start",
+              display: "flex",
+              flexDirection: "column",
+              gap: 14,
+              minWidth: 0,
+            }}>
+              <PhotoSlot aspectRatio="4/5" tone={d.tone} src={d.src} alt={d.name} label={d.meal} rounded={14} />
+              <h4 style={{
+                fontFamily: "var(--font-serif)",
+                fontWeight: 400,
+                fontSize: 22,
+                lineHeight: 1.2,
+                color: "var(--olive-900)",
+                margin: 0,
+                letterSpacing: "-0.01em",
+                minHeight: "2.4em",
+              }}>{d.name}</h4>
+              <p style={{
+                margin: 0,
+                fontFamily: "var(--font-sans)",
+                fontSize: 14,
+                lineHeight: 1.55,
+                color: "var(--fg-muted)",
+                display: "-webkit-box",
+                WebkitLineClamp: 3,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+              }}>{d.desc}</p>
+            </article>
+          ))}
+        </div>
+
+        <style>{`
+          .dish-gallery {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-padding-left: 0;
+            padding-bottom: 8px;
+            margin: 0 calc(-1 * var(--container-gutter, 24px));
+            padding-left: var(--container-gutter, 24px);
+            padding-right: var(--container-gutter, 24px);
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+          .dish-gallery::-webkit-scrollbar { display: none; }
+
+          .gal-arrow {
+            width: 42px;
+            height: 42px;
+            border-radius: 999px;
+            border: 1px solid color-mix(in oklab, var(--olive-900) 18%, transparent);
+            background: var(--paper);
+            color: var(--olive-900);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+          }
+          .gal-arrow:hover {
+            background: var(--olive-900);
+            border-color: var(--olive-900);
+            color: var(--paper);
+          }
+          .gal-arrow:focus-visible {
+            outline: 2px solid var(--olive-500);
+            outline-offset: 2px;
+          }
+
+          @media (max-width: 720px) {
+            .dish-gallery {
+              margin-left: 0;
+              margin-right: -22px;
+              padding-left: 22px;
+              padding-right: 22px;
+            }
+            .dish-gallery article {
+              flex: 0 0 78% !important;
+            }
+          }
+        `}</style>
+
+        <p style={{
+          marginTop: 24,
+          fontSize: 13,
+          color: "var(--fg-subtle)",
+          textAlign: "center",
+        }}>Sample menu shown. Your actual weekly menu rotates and adapts to your preferences and any allergies.</p>
+
+        {/* Longevity foods — compact grid */}
+        <div className="week-card" style={{
+          marginTop: 64,
+          background: "var(--paper)",
+          borderRadius: 24,
+          padding: "44px clamp(24px, 4vw, 48px) 40px",
+          border: "1px solid color-mix(in oklab, var(--olive-900) 10%, transparent)",
+        }}>
+          <div style={{
+            display: "flex",
+            alignItems: "flex-end",
+            justifyContent: "space-between",
+            gap: 32,
+            flexWrap: "wrap",
+            marginBottom: 32,
+          }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10, maxWidth: 560 }}>
+              <Eyebrow>What's actually in your week</Eyebrow>
+              <h3 style={{
+                fontFamily: "var(--font-serif)",
+                fontWeight: 400,
+                fontSize: "clamp(26px, 2.6vw, 34px)",
+                lineHeight: 1.12,
+                letterSpacing: "-0.015em",
+                color: "var(--olive-900)",
+                margin: 0,
+                textWrap: "balance",
+              }}>
+                Every box is built from a handful of <em style={{ fontStyle: "italic" }}>longevity foods.</em>
+              </h3>
+            </div>
+            <p style={{
+              margin: 0,
+              maxWidth: 360,
+              fontFamily: "var(--font-sans)",
+              fontSize: 14,
+              lineHeight: 1.55,
+              color: "var(--fg-muted)",
+            }}>
+              No mystery "superfood" powders. Just whole ingredients chosen for what they do, not how they photograph.
+            </p>
+          </div>
+
+          <ul className="food-grid" style={{
+            listStyle: "none",
+            margin: 0,
+            padding: 0,
+            display: "grid",
+            gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+            borderTop: "1px solid color-mix(in oklab, var(--olive-900) 12%, transparent)",
+            borderLeft: "1px solid color-mix(in oklab, var(--olive-900) 12%, transparent)",
+          }}>
+            {foods.map((row) => (
+              <li key={row.name} style={{
+                background: "var(--paper)",
+                padding: "22px 22px 24px",
+                display: "flex",
+                flexDirection: "column",
+                gap: 10,
+                minWidth: 0,
+                borderRight: "1px solid color-mix(in oklab, var(--olive-900) 12%, transparent)",
+                borderBottom: "1px solid color-mix(in oklab, var(--olive-900) 12%, transparent)",
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
+                  <span style={{
+                    width: 28, height: 28,
+                    borderRadius: 999,
+                    background: "var(--olive-100)",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "var(--olive-700)",
+                    flexShrink: 0,
+                  }}>
+                    <Icon name={row.icon} size={15} />
+                  </span>
+                  <span style={{
+                    fontFamily: "var(--font-serif)",
+                    fontSize: 22,
+                    lineHeight: 1.1,
+                    color: "var(--olive-900)",
+                    letterSpacing: "-0.01em",
+                    minWidth: 0,
+                  }}>{row.name}</span>
+                </div>
+                <span style={{
+                  fontFamily: "var(--font-sans)",
+                  fontSize: 10,
+                  fontWeight: 600,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "var(--olive-600)",
+                }}>{row.tag}</span>
+                <p style={{
+                  margin: 0,
+                  marginTop: 2,
+                  fontFamily: "var(--font-sans)",
+                  fontSize: 13,
+                  lineHeight: 1.5,
+                  color: "var(--fg-muted)",
+                }}>{row.benefit}</p>
+              </li>
+            ))}
+          </ul>
+
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            marginTop: 32,
+          }}>
+            <CTA size="md" onClick={openModal}>{PRIMARY_CTA}</CTA>
+          </div>
+        </div>
+
+        <style>{`
+          @media (max-width: 880px) {
+            .food-grid {
+              grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+          }
+          @media (max-width: 560px) {
+            .food-grid {
+              grid-template-columns: 1fr !important;
+            }
+          }
+        `}</style>
+      </div>
+    </section>
+  );
+}
+
+window.LP1 = { Header, Hero, TrustStrip, Problem, Manifesto, Evidence, FoodWall, CTA, Eyebrow, SerifHead, PhotoSlot };
+
+  
+</script>
+  <script type="text/babel" data-presets="react,env">
+/* Longevity Diet — Landing Page (part 2)
+   Screens 7–10, sticky bar, qualification modal. */
+
+/* global React, Icon */
+const { useState: useState2, useEffect: useEffect2, useRef: useRef2 } = React;
+
+/* ============================================================
+   Screen 7 — PRICING
+   ============================================================ */
+function Pricing({ openModal }) {
+  const plans = [
+    {
+      id: "5d",
+      label: "5-Day Start",
+      duration: "5 days",
+      perDay: "350",
+      total: "1,750",
+      bullets: [
+        "Introduction to the plan",
+        "Try the food, see how it fits",
+        "Best for first-time clients",
+        "Single delivery cadence",
+      ],
+      popular: false,
+    },
+    {
+      id: "14d",
+      label: "14-Day",
+      duration: "14 days",
+      perDay: "325",
+      total: "4,550",
+      bullets: [
+        "Two weeks of consistency",
+        "Pattern starts to settle in",
+        "Travel-pause supported",
+        "Daily fresh delivery",
+      ],
+      popular: false,
+    },
+    {
+      id: "28d",
+      label: "28-Day",
+      duration: "28 days",
+      perDay: "275",
+      total: "7,700",
+      bullets: [
+        "Best per-day value",
+        "Full month of compounding",
+        "Travel-pause and skip days included",
+        "Daily fresh delivery, calibrated",
+      ],
+      popular: true,
+    },
+  ];
+
+  return (
+    <section style={{ padding: "112px 0 96px" }}>
+      <div className="container">
+        <div style={{ maxWidth: 760, margin: "0 auto 36px", textAlign: "center" }}>
+          <Eyebrow>Plans &amp; pricing</Eyebrow>
+          <SerifHead as="h2" size={48}>
+            A full day, from 1,600 kcal — adjusted to you.
+          </SerifHead>
+          <p style={{ marginTop: 18, fontSize: 18, lineHeight: 1.55, color: "var(--fg-muted)" }}>
+            The standard Longevity Diet day starts at 1,600 kcal across breakfast, lunch, dinner, and two snacks. If you train hard, travel a lot, or just have a larger frame, we'll calibrate higher with you on WhatsApp — no extra step on this page. Same food, same framework, recalculated portions.
+          </p>
+          <p style={{ marginTop: 14, fontSize: 13, color: "var(--fg-subtle)", }}>
+            All adjustments and final pricing confirmed with our team before you commit. No surprises.
+          </p>
+        </div>
+
+        <div className="plan-grid">
+          {plans.map((p) => (
+            <article key={p.id} className={`plan-card ${p.popular ? "popular" : ""}`}>
+              {p.popular && (
+                <span className="plan-badge">
+                  <Icon name="star" size={12} /> Most popular
+                </span>
+              )}
+              <div className="plan-head">
+                <div className="plan-duration">{p.label}</div>
+                <div className="plan-price">
+                  <span className="from">from</span>
+                  <span className="amount">AED {p.perDay}</span>
+                  <span className="per">/ day</span>
+                </div>
+                <div className="plan-total">from AED {p.total} total</div>
+              </div>
+              <ul className="plan-bullets">
+                {p.bullets.map(b => (
+                  <li key={b}>
+                    <Icon name="check" size={16} color={p.popular ? "var(--olive-200)" : "var(--olive-600)"} strokeWidth={2} />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <CTA full tone={p.popular ? "light" : "primary"} onClick={openModal}>{PRIMARY_CTA}</CTA>
+            </article>
+          ))}
+        </div>
+
+        <div className="price-anchor-note">
+          <h3 style={{
+            fontFamily: "var(--font-serif)",
+            fontWeight: 400,
+            fontSize: 28,
+            color: "var(--olive-900)",
+            margin: 0,
+            letterSpacing: "-0.01em",
+          }}>Prices shown are the starting point.</h3>
+          <p style={{ margin: "12px 0 20px", fontSize: 16, lineHeight: 1.55, color: "var(--fg-muted)", maxWidth: 640 }}>
+            Every plan is calibrated to you — your calorie target, food preferences, and any allergies.<br />
+            We'll confirm the final price on WhatsApp before anything is charged.
+          </p>
+          <CTA size="md" onClick={openModal}>{PRIMARY_CTA}</CTA>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   Screen 8 — WHO IT'S FOR / NOT FOR
+   ============================================================ */
+function WhoFor({ openModal }) {
+  const forYou = [
+    "You're in your 30s, 40s, or 50s, and you've tried enough things to know what doesn't work for you",
+    "Cooking the right way for yourself every day isn't a realistic use of your time anymore",
+    "You want eating well to be a default, not a project",
+    "You're navigating perimenopause, andropause, or simply the fact that what worked at 30 doesn't work the same way at 45",
+    "You're looking for a way of eating that adds up over years, not a 5kg loss in a month",
+  ];
+  const notForYou = [
+    "Your main goal is weight loss — this isn't calorie-restricted and we don't promise kilograms (we have other plans for that)",
+    "You want a 3-day reset or a quick fix — even our 5-Day Start is an introduction, not a transformation",
+    "You have an active medical condition requiring a therapeutic diet — talk to your doctor first",
+    "Price is your main concern — this is genuinely premium food and it costs accordingly",
+  ];
+
+  return (
+    <section style={{ background: "#FFFFFF", padding: "112px 0 96px" }}>
+      <div className="container">
+        <div style={{ maxWidth: 720, margin: "0 auto 48px", textAlign: "center" }}>
+          <Eyebrow>An honest fit check</Eyebrow>
+          <SerifHead as="h2" size={48}>
+            Who this is for, and who it isn't.
+          </SerifHead>
+        </div>
+
+        <div className="who-grid">
+          <div className="who-col">
+            <div className="who-head">
+              <div className="who-tag" style={{ background: "var(--olive-100)", color: "var(--olive-700)" }}>
+                <Icon name="check" size={16} strokeWidth={2.5} /> This is for you if…
+              </div>
+            </div>
+            <ul className="who-list">
+              {forYou.map((t) => (
+                <li key={t}>
+                  <Icon name="check" size={18} color="var(--olive-600)" strokeWidth={2} />
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="who-col">
+            <div className="who-head">
+              <div className="who-tag" style={{ background: "#FDECE7", color: "#B33A22" }}>
+                <Icon name="x" size={16} strokeWidth={2.5} /> This isn't for you if…
+              </div>
+            </div>
+            <ul className="who-list">
+              {notForYou.map((t) => (
+                <li key={t}>
+                  <Icon name="x" size={18} color="#B33A22" strokeWidth={2} />
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div style={{
+          marginTop: 56,
+          maxWidth: 640,
+          marginLeft: "auto", marginRight: "auto",
+          textAlign: "center",
+          fontFamily: "var(--font-serif)",
+          fontSize: 22,
+          lineHeight: 1.4,
+          color: "var(--olive-900)",
+          letterSpacing: "-0.005em",
+        }}>
+          If any of those describe you, message us anyway. We have other Healthy Kitchen plans that might be a better fit.
+        </div>
+
+        <div style={{ textAlign: "center", marginTop: 32 }}>
+          <CTA size="lg" onClick={openModal}>{PRIMARY_CTA}</CTA>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   Screen 9 — FAQ
+   ============================================================ */
+function FAQ({ openModal }) {
+  const [open, setOpen] = useState2(0);
+  const qs = [
+    { q: "Is the Longevity Diet a weight-loss plan?",
+      a: "No. The ongoing plan isn't calorie-restricted and we don't promise kilograms. If weight is your primary goal, we have other Healthy Kitchen plans designed for that — message us and we'll point you to the right one." },
+    { q: "How is this different from a 5-day cleanse or a fasting-mimicking kit?",
+      a: "Cleanses end on day five. The Longevity Diet is everyday food. We offer a 5-Day Start as a way to try the plan first, but the value compounds in the daily plan, where the eating pattern actually has time to settle in. Both options are real food, prepared fresh." },
+    { q: "Is this safe if I'm gluten or dairy intolerant?",
+      a: "Yes. The entire menu is gluten-free, dairy-free, and sugar-free by default. All our proteins are organic — pasture-raised meat, free-range poultry, and wild-caught fish, with no industrial sourcing or hidden additives. Tell us about any allergies at signup and we'll adjust the menu accordingly." },
+    { q: "Why is this more expensive than other Dubai meal plans?",
+      a: "Because the inputs cost more. Clean sourcing where it matters. Extra virgin olive oil as the primary fat, not seed oils. Wild-caught fish. Organic protein. Daily cooking and daily delivery. None of that is cheap to do properly." },
+    { q: "Can I pause if I travel or have work dinners?",
+      a: "Yes. Pause, skip days, or change plan in a single WhatsApp message." },
+    { q: "How does delivery work in Dubai?",
+      a: "Fresh delivery every morning, citywide. Free across Dubai. You'll be given a regular delivery window when you start — most clients receive between 5am and 9am." },
+  ];
+
+  return (
+    <section style={{ padding: "112px 0 96px" }}>
+      <div className="container narrow">
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <Eyebrow>Last questions</Eyebrow>
+          <SerifHead as="h2" size={48}>The honest answers.</SerifHead>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          {qs.map((it, i) => (
+            <div key={it.q} style={{
+              borderTop: "1px solid var(--border-soft)",
+              ...(i === qs.length - 1 ? { borderBottom: "1px solid var(--border-soft)" } : {}),
+            }}>
+              <button
+                onClick={() => setOpen(open === i ? -1 : i)}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: 16,
+                  padding: "24px 0",
+                  background: "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                  textAlign: "left",
+                  color: "var(--olive-900)",
+                  fontFamily: "var(--font-sans)",
+                  fontWeight: 600,
+                  fontSize: 20,
+                  lineHeight: 1.3,
+                  letterSpacing: "-0.005em",
+                }}
+              >
+                <span>{it.q}</span>
+                <span style={{
+                  flexShrink: 0,
+                  width: 32, height: 32,
+                  borderRadius: 999,
+                  background: open === i ? "var(--olive-500)" : "var(--olive-100)",
+                  color: open === i ? "var(--paper)" : "var(--olive-700)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "all 200ms var(--ease-out)",
+                }}>
+                  <Icon name={open === i ? "minus" : "plus"} size={16} strokeWidth={2} />
+                </span>
+              </button>
+              <div style={{
+                maxHeight: open === i ? 400 : 0,
+                overflow: "hidden",
+                transition: "max-height 320ms var(--ease-out)",
+              }}>
+                <p style={{
+                  margin: 0,
+                  padding: "0 0 24px 0",
+                  paddingRight: 48,
+                  fontSize: 17,
+                  lineHeight: 1.6,
+                  color: "var(--fg-muted)",
+                }}>{it.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ textAlign: "center", marginTop: 56 }}>
+          <CTA size="lg" onClick={openModal}>{PRIMARY_CTA}</CTA>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   Screen 10 — FINAL CTA
+   ============================================================ */
+function FinalCTA({ openModal }) {
+  return (
+    <section style={{
+      background: "var(--olive-900)",
+      color: "var(--paper)",
+      padding: "120px 0",
+      position: "relative",
+      overflow: "hidden",
+    }}>
+      {/* Decorative serif glyph in background */}
+      <div style={{
+        position: "absolute",
+        left: "50%",
+        bottom: "8%",
+        transform: "translateX(-50%)",
+        fontFamily: "var(--font-serif)",
+        fontSize: "clamp(220px, 34vw, 440px)",
+        lineHeight: 1,
+        color: "color-mix(in oklab, var(--paper) 9%, transparent)",
+        pointerEvents: "none",
+        userSelect: "none",
+        whiteSpace: "nowrap",
+        letterSpacing: "-0.02em",
+      }}>longevity</div>
+
+      <div className="container narrow" style={{ position: "relative", textAlign: "center" }}>
+        <img
+          src="assets/healthy-kitchen-logo-cream.png"
+          alt="Healthy Kitchen — Healing food delivery"
+          style={{ height: 84, width: "auto", display: "block", margin: "0 auto 28px" }}
+        />
+        <SerifHead as="h2" size={72} color="var(--paper)">
+          Eat well, starting Monday.
+        </SerifHead>
+        <p style={{
+          marginTop: 24,
+          fontSize: 19,
+          lineHeight: 1.5,
+          color: "color-mix(in oklab, var(--paper) 78%, transparent)",
+          maxWidth: 560,
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}>
+          Order before Friday to start on Monday. Free delivery across Dubai. Pause or change anytime.
+        </p>
+        <p style={{
+          marginTop: 16,
+          fontSize: 17,
+          lineHeight: 1.5,
+          color: "color-mix(in oklab, var(--paper) 70%, transparent)",
+          maxWidth: 560,
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}>
+          Talk to our expert and we'll help you decide which plan fits — and answer anything else you want to know first.
+        </p>
+        <div style={{ marginTop: 36 }}>
+          <CTA size="lg" tone="light" onClick={openModal}>{PRIMARY_CTA}</CTA>
+        </div>
+        <p style={{
+          marginTop: 20,
+          fontSize: 13,
+          color: "color-mix(in oklab, var(--paper) 60%, transparent)",
+        }}>
+          Takes 30 seconds. No long-term commitment. Pause in one message.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   Sticky bottom bar (mobile)
+   ============================================================ */
+function StickyBar({ openModal, visible }) {
+  return (
+    <div
+      className="sticky-bar"
+      style={{
+        transform: visible ? "translateY(0)" : "translateY(110%)",
+      }}
+    >
+      <div className="sticky-bar-inner">
+        <div>
+          <div style={{ fontFamily: "var(--font-sans)", fontSize: 12, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--fg-subtle)" }}>Longevity Diet</div>
+          <div style={{ fontFamily: "var(--font-sans)", fontSize: 14, fontWeight: 600, color: "var(--olive-900)", marginTop: 2 }}>from AED 275 / day</div>
+        </div>
+        <CTA size="sm" onClick={openModal}>{PRIMARY_CTA}</CTA>
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
+   Qualification form modal
+   ============================================================ */
+function QualModal({ open, onClose }) {
+  const [step, setStep] = useState2(0);
+  const [f1, setF1] = useState2(null);
+  const [f2, setF2] = useState2(null);
+  const [done, setDone] = useState2(false);
+
+  useEffect2(() => {
+    if (!open) {
+      // Reset after close animation
+      const t = setTimeout(() => { setStep(0); setF1(null); setF2(null); setDone(false); }, 320);
+      return () => clearTimeout(t);
+    }
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
+  const opts1 = [
+    "More energy and fewer crashes in my day",
+    "Long-term health and biological aging",
+    "Recovery from a recent biomarker result or health screen",
+    "I just want to eat well consistently without thinking about it",
+  ];
+  const opts2 = [
+    "Just want to try the food first (5 days)",
+    "A couple of weeks to see how it fits (7–14 days)",
+    "A full month — I'd rather commit and see real change (28 days)",
+    "Not sure yet, want to discuss with someone",
+  ];
+
+  const canSubmit = f1 && f2;
+
+  const handleSubmit = () => {
+    setDone(true);
+    // Build WhatsApp link
+    const text = `Hi Healthy Kitchen. I'm interested in the Longevity Diet.\nI'm looking for: ${f1}\nThinking about: ${f2}`;
+    const url = `https://wa.me/971000000000?text=${encodeURIComponent(text)}`;
+    // Note: we don't actually open it — this is a prototype
+    console.log("WhatsApp URL:", url);
+  };
+
+  return (
+    <div
+      className="modal-scrim"
+      style={{
+        opacity: open ? 1 : 0,
+        pointerEvents: open ? "auto" : "none",
+      }}
+      onClick={onClose}
+    >
+      <div
+        className="modal-sheet"
+        style={{
+          transform: open ? "translateY(0)" : "translateY(32px)",
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close */}
+        <button onClick={onClose} className="modal-close">
+          <Icon name="x" size={20} strokeWidth={2} />
+        </button>
+
+        {!done ? (
+          <div className="modal-body">
+            <div style={{ marginBottom: 8 }}>
+              <Eyebrow>Takes 30 seconds</Eyebrow>
+            </div>
+            <h3 style={{
+              fontFamily: "var(--font-serif)",
+              fontWeight: 400,
+              fontSize: 32,
+              lineHeight: 1.1,
+              color: "var(--olive-900)",
+              margin: "0 0 4px 0",
+              letterSpacing: "-0.01em",
+            }}>A few quick questions, then we'll connect you.</h3>
+
+            <div className="modal-progress">
+              <span style={{
+                background: step >= 0 ? "var(--olive-500)" : "var(--paper-3)",
+              }}></span>
+              <span style={{
+                background: step >= 1 ? "var(--olive-500)" : "var(--paper-3)",
+              }}></span>
+            </div>
+
+            {step === 0 && (
+              <div>
+                <label style={{
+                  display: "block",
+                  fontFamily: "var(--font-sans)",
+                  fontWeight: 600,
+                  fontSize: 16,
+                  color: "var(--olive-900)",
+                  marginBottom: 14,
+                }}>What's drawing you to a longevity-focused plan?</label>
+                <div className="chip-stack">
+                  {opts1.map(o => (
+                    <button
+                      key={o}
+                      onClick={() => { setF1(o); setStep(1); }}
+                      className={`chip ${f1 === o ? "selected" : ""}`}
+                    >
+                      <span style={{
+                        width: 20, height: 20, flexShrink: 0,
+                        borderRadius: 999,
+                        border: `2px solid ${f1 === o ? "var(--olive-500)" : "var(--border-strong)"}`,
+                        background: f1 === o ? "var(--olive-500)" : "transparent",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        transition: "all 160ms var(--ease-out)",
+                      }}>
+                        {f1 === o && <Icon name="check" size={12} color="var(--paper)" strokeWidth={3} />}
+                      </span>
+                      <span>{o}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {step === 1 && (
+              <div>
+                <button onClick={() => setStep(0)} style={{
+                  background: "none", border: "none", padding: 0, cursor: "pointer",
+                  fontFamily: "var(--font-sans)", fontSize: 13, color: "var(--fg-subtle)",
+                  display: "inline-flex", alignItems: "center", gap: 4, marginBottom: 12,
+                }}>← Back</button>
+                <label style={{
+                  display: "block",
+                  fontFamily: "var(--font-sans)",
+                  fontWeight: 600,
+                  fontSize: 16,
+                  color: "var(--olive-900)",
+                  marginBottom: 14,
+                }}>How long are you looking to commit to start?</label>
+                <div className="chip-stack">
+                  {opts2.map(o => (
+                    <button
+                      key={o}
+                      onClick={() => setF2(o)}
+                      className={`chip ${f2 === o ? "selected" : ""}`}
+                    >
+                      <span style={{
+                        width: 20, height: 20, flexShrink: 0,
+                        borderRadius: 999,
+                        border: `2px solid ${f2 === o ? "var(--olive-500)" : "var(--border-strong)"}`,
+                        background: f2 === o ? "var(--olive-500)" : "transparent",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        transition: "all 160ms var(--ease-out)",
+                      }}>
+                        {f2 === o && <Icon name="check" size={12} color="var(--paper)" strokeWidth={3} />}
+                      </span>
+                      <span>{o}</span>
+                    </button>
+                  ))}
+                </div>
+                <button
+                  onClick={handleSubmit}
+                  disabled={!canSubmit}
+                  className="wa-btn"
+                  style={{ opacity: canSubmit ? 1 : 0.5, cursor: canSubmit ? "pointer" : "not-allowed" }}
+                >
+                  <Icon name="whatsapp" size={20} strokeWidth={1.8} color="currentColor" />
+                  <span>Chat with our expert on WhatsApp</span>
+                  <span style={{ marginLeft: 4 }}>→</span>
+                </button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="modal-body" style={{ textAlign: "center", paddingTop: 32, paddingBottom: 32 }}>
+            <div style={{
+              width: 64, height: 64, borderRadius: 999,
+              background: "var(--olive-100)",
+              color: "var(--olive-600)",
+              margin: "0 auto 20px",
+              display: "flex", alignItems: "center", justifyContent: "center",
+            }}>
+              <Icon name="whatsapp" size={32} strokeWidth={1.8} />
+            </div>
+            <SerifHead as="h3" size={28}>Opening WhatsApp…</SerifHead>
+            <p style={{
+              marginTop: 14,
+              fontSize: 15, lineHeight: 1.5, color: "var(--fg-muted)",
+              maxWidth: 360, marginLeft: "auto", marginRight: "auto",
+            }}>
+              We've drafted your message. Hit send and our expert will reply within an hour during Dubai daytime.
+            </p>
+            <div style={{ marginTop: 24 }}>
+              <button onClick={onClose} style={{
+                background: "transparent", border: "none", padding: "8px 12px",
+                fontFamily: "var(--font-sans)", fontSize: 14, color: "var(--fg-subtle)",
+                cursor: "pointer", textDecoration: "underline", textUnderlineOffset: 4,
+              }}>Close</button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+window.LP2 = { Pricing, WhoFor, FAQ, FinalCTA, StickyBar, QualModal };
+
+  </script>
+  <script type="text/babel" data-presets="react,env">
+/* Longevity Diet — App shell.
+   Ties together all sections, manages modal + sticky bar state. */
+
+/* global React */
+function App() {
+  const { Header, Hero, TrustStrip, Problem, Manifesto, Evidence, FoodWall } = window.LP1;
+  const { Pricing, WhoFor, FAQ, FinalCTA, StickyBar, QualModal } = window.LP2;
+
+  const [open, setOpen] = React.useState(false);
+  const [showBar, setShowBar] = React.useState(false);
+
+  React.useEffect(() => {
+    const onScroll = () => {
+      // Show sticky bar once user passes ~80% of viewport (i.e. past hero)
+      setShowBar(window.scrollY > window.innerHeight * 0.8);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const openModal = () => setOpen(true);
+  const closeModal = () => setOpen(false);
+
+  return (
+    <>
+      <Header openModal={openModal} />
+      <Hero openModal={openModal} />
+      <TrustStrip />
+      <Problem />
+      <Manifesto openModal={openModal} />
+      <Evidence openModal={openModal} />
+      <FoodWall openModal={openModal} />
+      <Pricing openModal={openModal} />
+      <WhoFor openModal={openModal} />
+      <FAQ openModal={openModal} />
+      <FinalCTA openModal={openModal} />
+      <StickyBar openModal={openModal} visible={showBar} />
+      <QualModal open={open} onClose={closeModal} />
+    </>
+  );
+}
+
+window.App = App;
+
+  </script>
+  <script type="text/babel" data-presets="react,env">
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+
+</body>
+</html>
